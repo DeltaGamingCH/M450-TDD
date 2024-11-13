@@ -135,8 +135,6 @@ namespace TDD_2._4_BankKontoTest
                 testZinsBetrag = testGuthaben * testBankKonto.passivZins / 100;
             }
 
-            Console.WriteLine(testZinsBetrag);
-
             // Assert
             Assert.AreEqual(-5.0, testZinsBetrag);
         }
