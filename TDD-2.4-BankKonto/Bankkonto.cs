@@ -10,8 +10,8 @@ namespace TDD_2._4_BankKonto
     {
         public int KontoNummer { get; private set; }
         public double Guthaben { get; private set; }
-        public double aktivZins;
-        public double passivZins;
+        public double aktivZins = 0.25;
+        public double passivZins = 0.5;
 
         public Bankkonto(int kontoNummer)
         { 
@@ -29,7 +29,10 @@ namespace TDD_2._4_BankKonto
 
         public void ZahleEin(double betrag)
         {
-            Guthaben += betrag;
+            if (betrag > 0)
+            {
+                Guthaben += betrag;
+            }
         }
 
         public void Beziehe(double betrag)
