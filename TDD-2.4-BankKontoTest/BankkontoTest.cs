@@ -126,7 +126,6 @@ namespace TDD_2._4_BankKontoTest
             Bankkonto testBankKonto = new(testKontoNummer, testGuthaben);
 
             // Act
-
             if (testGuthaben >= 0)
             {
                 testZinsBetrag = testGuthaben * testBankKonto.aktivZins / 100;
@@ -143,7 +142,7 @@ namespace TDD_2._4_BankKontoTest
         [TestMethod]
         public void KontoAbschlussZinsHinzufuegen()
         {
-            //Arrange
+            // Arrange
             int testKontoNummer = 12345678;
 
             double testGuthaben = 1000;
@@ -153,12 +152,12 @@ namespace TDD_2._4_BankKontoTest
             Bankkonto testBankKonto = new(testKontoNummer, testGuthaben);
 
             // Act
-
             if (testZinsBetrag >= 0)
             {
                 testGuthaben = testGuthaben + testZinsBetrag;
             }
 
+            // Assert
             Assert.AreEqual(1002.5, testGuthaben);
         }
 
@@ -177,7 +176,6 @@ namespace TDD_2._4_BankKontoTest
             int anzahlTage = 180;
 
             // Act
-
             testZinsBetrag = testBankKonto.SchreibeZinsGut(anzahlTage);
 
             if (testBankKonto.SchreibeZinsGut(anzahlTage) >= 0)
@@ -190,7 +188,6 @@ namespace TDD_2._4_BankKontoTest
             }
 
             // Assert
-
             Assert.AreEqual(1450, testGuthaben);
         }
     }
