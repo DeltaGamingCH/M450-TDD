@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TDD_2._4_BankKonto
 {
-    public class Bankkonto
+    public abstract class Bankkonto
     {
         public int KontoNummer { get; private set; }
         public double Guthaben { get; private set; }
@@ -14,18 +14,13 @@ namespace TDD_2._4_BankKonto
         public double passivZins = 0.5;
         //int anzahlTage = 360;
 
+        public double MaximalBetrag { get; set; }
+
         public Bankkonto(int kontoNummer, double guthaben)
         { 
             KontoNummer = kontoNummer;
 
             Guthaben = guthaben;
-
-            /*
-            if (kontoNummer != null && kontoNummer != 0)
-            {
-                Random random = new Random();
-                kontoNummer = random.Next(10000000, 99999999);
-            }*/
         }
 
         public void ZahleEin(double betrag)
@@ -68,6 +63,10 @@ namespace TDD_2._4_BankKonto
         public void SchlisseKontoAb()
         {
 
+        }
+
+        public void maximalBetragUeberschritten()
+        {
         }
     }
 }

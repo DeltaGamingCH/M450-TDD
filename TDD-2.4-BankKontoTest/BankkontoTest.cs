@@ -13,10 +13,10 @@ namespace TDD_2._4_BankKontoTest
             int testKontoNummer = 12345678;
 
             // Act
-            Bankkonto bankkonto = new(testKontoNummer, 0);
+            JugendKonto jugendKonto = new(testKontoNummer, 0);
 
             // Assert
-            Assert.AreEqual(0, bankkonto.Guthaben);
+            Assert.AreEqual(0, jugendKonto.Guthaben);
         }
      
         /* 
@@ -39,15 +39,15 @@ namespace TDD_2._4_BankKontoTest
             // Arrange 
             int testKontoNummer = 12345678;
 
-            Bankkonto bankkonto = new(testKontoNummer, 0);
+            JugendKonto jugendKonto = new(testKontoNummer, 0);
 
             double testBetrag = 1000;
 
             // Act
-            bankkonto.ZahleEin(testBetrag);
+            jugendKonto.ZahleEin(testBetrag);
 
             // Assert
-            Assert.AreEqual(testBetrag, bankkonto.Guthaben);
+            Assert.AreEqual(testBetrag, jugendKonto.Guthaben);
         }
 
         [TestMethod]
@@ -56,15 +56,15 @@ namespace TDD_2._4_BankKontoTest
             // Arrange
             int testKontoNummer = 123455678;
 
-            Bankkonto testBankkonto = new(testKontoNummer, 0);
+            JugendKonto jugendKonto = new(testKontoNummer, 0);
 
             double testBetrag = 1000;
 
             // Act
-            testBankkonto.Beziehe(testBetrag);
+            jugendKonto.Beziehe(testBetrag);
 
             // Assert
-            Assert.AreEqual(-testBetrag, testBankkonto.Guthaben);
+            Assert.AreEqual(-testBetrag, jugendKonto.Guthaben);
         }
 
         [TestMethod]
@@ -75,16 +75,16 @@ namespace TDD_2._4_BankKontoTest
 
             double testErwarteterBetrag = 1000 + 1000 - 3000 + 2000;
 
-            Bankkonto testBankkonto = new(testKontoNummer, 0);
+            JugendKonto jugendKonto = new(testKontoNummer, 0);
 
             // Act
-            testBankkonto.ZahleEin(1000);
-            testBankkonto.ZahleEin(1000);
-            testBankkonto.Beziehe(3000);
-            testBankkonto.ZahleEin(2000);
+            jugendKonto.ZahleEin(1000);
+            jugendKonto.ZahleEin(1000);
+            jugendKonto.Beziehe(3000);
+            jugendKonto.ZahleEin(2000);
 
             // Assert
-            Assert.AreEqual(testErwarteterBetrag, testBankkonto.Guthaben);
+            Assert.AreEqual(testErwarteterBetrag, jugendKonto.Guthaben);
         }
 
         [TestMethod]
@@ -97,16 +97,16 @@ namespace TDD_2._4_BankKontoTest
 
             double testZinsBetrag = 0;
 
-            Bankkonto testBankKonto = new(testKontoNummer, testGuthaben);
+            JugendKonto jugendKonto = new(testKontoNummer, testGuthaben);
 
             // Act
 
             if (testGuthaben >= 0)
             {
-                testZinsBetrag = testGuthaben * testBankKonto.aktivZins / 100;
+                testZinsBetrag = testGuthaben * jugendKonto.aktivZins / 100;
             } else
             {
-                testZinsBetrag = testGuthaben * testBankKonto.passivZins / 100;
+                testZinsBetrag = testGuthaben * jugendKonto.passivZins / 100;
             }
 
             // Assert
@@ -123,16 +123,16 @@ namespace TDD_2._4_BankKontoTest
 
             double testZinsBetrag = 0;
 
-            Bankkonto testBankKonto = new(testKontoNummer, testGuthaben);
+            JugendKonto testjugendKonto = new(testKontoNummer, testGuthaben);
 
             // Act
             if (testGuthaben >= 0)
             {
-                testZinsBetrag = testGuthaben * testBankKonto.aktivZins / 100;
+                testZinsBetrag = testGuthaben * testjugendKonto.aktivZins / 100;
             }
             else
             {
-                testZinsBetrag = testGuthaben * testBankKonto.passivZins / 100;
+                testZinsBetrag = testGuthaben * testjugendKonto.passivZins / 100;
             }
 
             // Assert
@@ -149,7 +149,7 @@ namespace TDD_2._4_BankKontoTest
 
             double testZinsBetrag = 2.5;
 
-            Bankkonto testBankKonto = new(testKontoNummer, testGuthaben);
+            JugendKonto testjugendKonto = new(testKontoNummer, testGuthaben);
 
             // Act
             if (testZinsBetrag >= 0)
@@ -171,14 +171,14 @@ namespace TDD_2._4_BankKontoTest
 
             double testZinsBetrag = 0;
 
-            Bankkonto testBankKonto = new(testKontoNummer, testGuthaben);
+            JugendKonto jugendKonto = new(testKontoNummer, testGuthaben);
 
             int anzahlTage = 180;
 
             // Act
-            testZinsBetrag = testBankKonto.SchreibeZinsGut(anzahlTage);
+            testZinsBetrag = jugendKonto.SchreibeZinsGut(anzahlTage);
 
-            if (testBankKonto.SchreibeZinsGut(anzahlTage) >= 0)
+            if (jugendKonto.SchreibeZinsGut(anzahlTage) >= 0)
             {
                 testGuthaben = testGuthaben + testZinsBetrag;
             }
@@ -189,6 +189,19 @@ namespace TDD_2._4_BankKontoTest
 
             // Assert
             Assert.AreEqual(1450, testGuthaben);
+        }
+
+        [TestMethod]
+        public void jugendKonto()
+        {
+            // Arrange
+            JugendKonto jugendKonto = new(12345678, -2000);
+
+            // Act
+            ...
+
+            // Assert
+            ...
         }
     }
 }
